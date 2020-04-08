@@ -23,6 +23,47 @@ def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
             A[equal], A[larger] = A[larger], A[equal]
 
 
+def variant1(A: List[int]) -> None:
+    curr_i = 0
+    curr = A[curr_i]
+    for i in range(len(A)):
+        if A[i] == curr:
+            A[i], A[curr_i] = A[curr_i], A[i]
+            curr_i += 1
+    curr = A[curr_i]
+    for i in range(curr_i, len(A)):
+        if A[i] == curr:
+            A[i], A[curr_i] = A[curr_i], A[i]
+            curr_i += 1
+
+
+def variant2(A: List[int]) -> None:
+    curr_i = 0
+    curr = A[curr_i]
+    for i in range(len(A)):
+        if A[i] == curr:
+            A[i], A[curr_i] = A[curr_i], A[i]
+            curr_i += 1
+    curr = A[curr_i]
+    for i in range(curr_i, len(A)):
+        if A[i] == curr:
+            A[i], A[curr_i] = A[curr_i], A[i]
+            curr_i += 1
+    curr = A[curr_i]
+    for i in range(curr_i, len(A)):
+        if A[i] == curr:
+            A[i], A[curr_i] = A[curr_i], A[i]
+            curr_i += 1
+
+
+def variant3(A: List[bool]) -> None:
+    start = 0
+    for i in range(len(A)):
+        if not A[i]:
+            A[start], A[i] = A[i], A[start]
+            start += 1
+
+
 @enable_executor_hook
 def dutch_flag_partition_wrapper(executor, A, pivot_idx):
     count = [0, 0, 0]
