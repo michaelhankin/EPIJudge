@@ -2,10 +2,16 @@ from typing import List
 
 from test_framework import generic_test
 
+from collections import defaultdict
+
 
 def can_reach_end(A: List[int]) -> bool:
-    # TODO - you fill in here.
-    return True
+    last_index = len(A) - 1
+    i = furthest_reach_so_far = 0
+    while i <= furthest_reach_so_far and furthest_reach_so_far < last_index:
+        furthest_reach_so_far = max(furthest_reach_so_far, A[i] + i)
+        i += 1
+    return furthest_reach_so_far >= last_index
 
 
 if __name__ == '__main__':
